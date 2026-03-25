@@ -51,34 +51,86 @@ REGIONS = {
     'Back': ['Back', 'Spine', 'Vertebral column', 'Sacrum'],
 }
 
-# Anatomical hierarchy for UI browser (System -> Region -> [Parts])
-# This constant is required by ui.py and select.py
+# Anatomy hierarchy: System -> Region -> [Parts]
+# This is the primary data structure used by UI and selection operators
 ANATOMY_HIERARCHY = {
     'Muscular System': {
-        'Head & Neck': ['Musculus masseter', 'Musculus temporalis', 'Musculus sternocleidomastoideus', 'Musculus platysma'],
-        'Thorax': ['Musculus pectoralis major', 'Musculus pectoralis minor', 'Musculus intercostales externi', 'Musculus diaphragma'],
-        'Abdomen': ['Musculus rectus abdominis', 'Musculus obliquus externus abdominis', 'Musculus transversus abdominis'],
-        'Upper Limb': ['Musculus biceps brachii', 'Musculus triceps brachii', 'Musculus deltoideus'],
-        'Lower Limb': ['Musculus gluteus maximus', 'Musculus quadriceps femoris', 'Musculus gastrocnemius'],
-        'Back': ['Musculus trapezius', 'Musculus latissimus dorsi', 'Musculus erector spinae'],
+        'Head & Neck': [
+            'Masseter', 'Temporalis', 'Frontalis', 'Orbicularis oculi', 'Buccinator',
+            'Orbicularis oris', 'Zygomaticus', 'Sternocleidomastoid', 'Trapezius',
+            'Digastric', 'Mylohyoid', 'Geniohyoid', 'Platysma'
+        ],
+        'Upper Limb': [
+            'Deltoid', 'Biceps brachii', 'Triceps brachii', 'Brachialis',
+            'Brachioradialis', 'Pronator teres', 'Supinator', 'Flexor carpi radialis',
+            'Flexor carpi ulnaris', 'Extensor carpi radialis', 'Extensor carpi ulnaris',
+            'Thenar muscles', 'Hypothenar muscles'
+        ],
+        'Thorax': [
+            'Pectoralis major', 'Pectoralis minor', 'Subclavius', 'Serratus anterior',
+            'External intercostals', 'Internal intercostals', 'Diaphragm'
+        ],
+        'Abdomen': [
+            'Rectus abdominis', 'External oblique', 'Internal oblique',
+            'Transversus abdominis', 'Quadratus lumborum'
+        ],
+        'Lower Limb': [
+            'Gluteus maximus', 'Gluteus medius', 'Gluteus minimus',
+            'Tensor fasciae latae', 'Quadriceps femoris', 'Biceps femoris',
+            'Semitendinosus', 'Semimembranosus', 'Adductor magnus',
+            'Adductor longus', 'Gracilis', 'Sartorius', 'Gastrocnemius',
+            'Soleus', 'Tibialis anterior', 'Tibialis posterior',
+            'Peroneus longus', 'Peroneus brevis'
+        ],
+        'Back': [
+            'Erector spinae', 'Iliocostalis', 'Longissimus', 'Spinalis',
+            'Semispinalis', 'Multifidus', 'Rotatores'
+        ]
     },
     'Skeletal System': {
-        'Head & Neck': ['Os frontale', 'Os parietale', 'Os temporale', 'Mandibula', 'Maxilla'],
-        'Thorax': ['Sternum', 'Costae'],
-        'Abdomen': ['Os sacrum', 'Os coccygis'],
-        'Upper Limb': ['Clavicula', 'Scapula', 'Humerus', 'Radius', 'Ulna'],
-        'Lower Limb': ['Femur', 'Patella', 'Tibia', 'Fibula'],
-        'Back': ['Vertebrae cervicales', 'Vertebrae thoracicae', 'Vertebrae lumbales'],
+        'Head & Neck': [
+            'Skull', 'Mandible', 'Maxilla', 'Frontal bone', 'Parietal bone',
+            'Temporal bone', 'Occipital bone', 'Sphenoid bone', 'Ethmoid bone',
+            'Zygomatic bone', 'Nasal bone'
+        ],
+        'Thorax': [
+            'Sternum', 'Ribs', 'Vertebral column (thoracic)', 'Clavicle', 'Scapula'
+        ],
+        'Abdomen': [
+            'Vertebral column (lumbar)', 'Sacrum', 'Coccyx', 'Pelvis',
+            'Ilium', 'Ischium', 'Pubis'
+        ],
+        'Upper Limb': [
+            'Humerus', 'Radius', 'Ulna', 'Carpals', 'Metacarpals', 'Phalanges (hand)'
+        ],
+        'Lower Limb': [
+            'Femur', 'Patella', 'Tibia', 'Fibula', 'Tarsals', 'Metatarsals', 'Phalanges (foot)'
+        ],
+        'Back': [
+            'Vertebral column', 'Cervical vertebrae', 'Thoracic vertebrae',
+            'Lumbar vertebrae', 'Sacrum', 'Coccyx'
+        ]
     },
     'Nervous System': {
-        'Head & Neck': ['Encephalon', 'Cerebrum', 'Cerebellum', 'Truncus encephali'],
-        'Upper Limb': ['Nervus medianus', 'Nervus ulnaris', 'Nervus radialis', 'Plexus brachialis'],
-        'Lower Limb': ['Nervus femoralis', 'Nervus ischiadicus', 'Nervus tibialis', 'Nervus fibularis'],
-        'Back': ['Medulla spinalis'],
+        'Central Nervous System': [
+            'Brain', 'Cerebrum', 'Cerebellum', 'Brainstem', 'Spinal cord'
+        ],
+        'Peripheral Nervous System': [
+            'Brachial plexus', 'Lumbosacral plexus',
+            'Median nerve', 'Ulnar nerve', 'Radial nerve',
+            'Femoral nerve', 'Sciatic nerve', 'Tibial nerve', 'Fibular nerve'
+        ]
     },
     'Cardiovascular System': {
-        'Thorax': ['Aorta', 'Heart', 'Coronary artery', 'Pulmonary artery'],
-        'Neck': ['Arteria carotis communis', 'Vena jugularis'],
+        'Heart': ['Heart', 'Atria', 'Ventricles'],
+        'Arteries': ['Aorta', 'Carotid arteries', 'Subclavian arteries', 'Femoral arteries'],
+        'Veins': ['Vena cava', 'Jugular veins', 'Femoral veins']
+    },
+    'Visceral Systems': {
+        'Respiratory': ['Lungs', 'Trachea', 'Bronchi'],
+        'Digestive': ['Stomach', 'Intestines', 'Liver', 'Pancreas'],
+        'Urinary': ['Kidneys', 'Ureters', 'Bladder'],
+        'Reproductive': ['Reproductive organs']
     }
 }
 
