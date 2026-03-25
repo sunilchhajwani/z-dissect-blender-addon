@@ -51,6 +51,37 @@ REGIONS = {
     'Back': ['Back', 'Spine', 'Vertebral column', 'Sacrum'],
 }
 
+# Anatomical hierarchy for UI browser (System -> Region -> [Parts])
+# This constant is required by ui.py and select.py
+ANATOMY_HIERARCHY = {
+    'Muscular System': {
+        'Head & Neck': ['Musculus masseter', 'Musculus temporalis', 'Musculus sternocleidomastoideus', 'Musculus platysma'],
+        'Thorax': ['Musculus pectoralis major', 'Musculus pectoralis minor', 'Musculus intercostales externi', 'Musculus diaphragma'],
+        'Abdomen': ['Musculus rectus abdominis', 'Musculus obliquus externus abdominis', 'Musculus transversus abdominis'],
+        'Upper Limb': ['Musculus biceps brachii', 'Musculus triceps brachii', 'Musculus deltoideus'],
+        'Lower Limb': ['Musculus gluteus maximus', 'Musculus quadriceps femoris', 'Musculus gastrocnemius'],
+        'Back': ['Musculus trapezius', 'Musculus latissimus dorsi', 'Musculus erector spinae'],
+    },
+    'Skeletal System': {
+        'Head & Neck': ['Os frontale', 'Os parietale', 'Os temporale', 'Mandibula', 'Maxilla'],
+        'Thorax': ['Sternum', 'Costae'],
+        'Abdomen': ['Os sacrum', 'Os coccygis'],
+        'Upper Limb': ['Clavicula', 'Scapula', 'Humerus', 'Radius', 'Ulna'],
+        'Lower Limb': ['Femur', 'Patella', 'Tibia', 'Fibula'],
+        'Back': ['Vertebrae cervicales', 'Vertebrae thoracicae', 'Vertebrae lumbales'],
+    },
+    'Nervous System': {
+        'Head & Neck': ['Encephalon', 'Cerebrum', 'Cerebellum', 'Truncus encephali'],
+        'Upper Limb': ['Nervus medianus', 'Nervus ulnaris', 'Nervus radialis', 'Plexus brachialis'],
+        'Lower Limb': ['Nervus femoralis', 'Nervus ischiadicus', 'Nervus tibialis', 'Nervus fibularis'],
+        'Back': ['Medulla spinalis'],
+    },
+    'Cardiovascular System': {
+        'Thorax': ['Aorta', 'Heart', 'Coronary artery', 'Pulmonary artery'],
+        'Neck': ['Arteria carotis communis', 'Vena jugularis'],
+    }
+}
+
 # Common Latin/English name mappings for muscles
 MUSCLE_NAME_MAP = {
     # Latin -> English (Z-Anatomy uses Latin names)
