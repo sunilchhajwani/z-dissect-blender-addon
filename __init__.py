@@ -3,7 +3,7 @@ bl_info = {
     "description": "Anatomical dissection simulator for Z-Anatomy — scalpel cuts, layer removal, and peel tools with state save/restore",
     "author": "Z-Anatomy Contributors",
     "version": (0, 1, 0),
-    "blender": (4, 5, 0),
+    "blender": (4, 2, 0),
     "location": "View3D > N-Panel > Z-Dissect",
     "doc_url": "https://github.com/Z-Anatomy/Z-Dissect",
     "category": "3D View",

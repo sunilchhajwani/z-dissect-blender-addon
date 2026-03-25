@@ -2,7 +2,7 @@
 import bpy
 import json
 from bpy.props import StringProperty, IntProperty, BoolProperty, FloatProperty, CollectionProperty, EnumProperty
-from bpy.types import PropertyGroup, Operator, FileSelectParam
+from bpy.types import PropertyGroup, Operator
 
 
 class CutRecord(PropertyGroup):

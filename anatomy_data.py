@@ -368,8 +368,16 @@ def _build_system_maps():
     for key in DETECTED_OBJECTS:
         DETECTED_OBJECTS[key] = []
 
+    # Safety check: bpy.data may be restricted during registration
+    try:
+        collections = bpy.data.collections
+        objects = bpy.data.objects
+    except AttributeError:
+        # bpy.data not available yet (background mode or startup)
+        return
+
     # First, check Z-Anatomy collections
-    for collection in bpy.data.collections:
+    for collection in collections:
         col_name = collection.name
 
         # Map collection to system
@@ -384,7 +392,7 @@ def _build_system_maps():
                     DETECTED_OBJECTS[system].append(obj.name)
 
     # Then, for objects not in known collections, use heuristic detection
-    for obj in bpy.data.objects:
+    for obj in objects:
         if obj.type == 'MESH' and obj.name not in OBJECT_SYSTEM_MAP:
             # Skip label objects
             if any(suffix in obj.name for suffix in ['.t', '.j', '.g', '.st']):
