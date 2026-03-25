@@ -1,14 +1,14 @@
 """Blender Properties for dissection state tracking."""
 import bpy
 import json
-from bpy.props import StringProperty, IntProperty, BoolProperty, FloatProperty, CollectionProperty
+from bpy.props import StringProperty, IntProperty, BoolProperty, FloatProperty, CollectionProperty, EnumProperty
 from bpy.types import PropertyGroup, Operator, FileSelectParam
 
 
 class CutRecord(PropertyGroup):
     """Record of a single cut operation."""
     object_name: StringProperty(name="Object Name")
-    cut_type: StringProperty(name="Cut Type")  # 'scalpel', 'remove', 'peel'
+    cut_type: StringProperty(name="Cut Type")  # 'scalpel', 'remove', 'peel', 'sweep', 'optimize'
     timestamp: FloatProperty(name="Timestamp")
     backup_data: StringProperty(name="Backup Data")  # JSON of original mesh state
     description: StringProperty(name="Description")
@@ -50,6 +50,30 @@ class DissectionState(PropertyGroup):
     cut_count: IntProperty(
         name="Cut Count",
         default=0
+    )
+
+    # Optimization Properties
+    decimate_ratio: FloatProperty(
+        name="Decimate Ratio",
+        description="Ratio of faces to keep (1.0 = 100%, 0.1 = 10%)",
+        default=0.5,
+        min=0.0,
+        max=1.0
+    )
+    optimization_mode: EnumProperty(
+        name="Mode",
+        description="Optimization algorithm",
+        items=[
+            ('COLLAPSE', "Collapse", "Reduce polycount while preserving shape"),
+            ('UNSUBDIVIDE', "Un-Subdivide", "Reconstruct lower-level mesh"),
+            ('DISSOLVE', "Dissolve", "Remove planar vertices")
+        ],
+        default='COLLAPSE'
+    )
+    use_remesh: BoolProperty(
+        name="Use Remesh",
+        description="Apply Remesh for cleaner topology",
+        default=False
     )
 
     # Collections for tracking

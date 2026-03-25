@@ -32,6 +32,8 @@ classes = (
     select.DISSECT_OT_select_hierarchy,
     select.DISSECT_OT_refresh_anatomy,
     dissect_ops.DISSECT_OT_scalpel,
+    dissect_ops.DISSECT_OT_sweep_scalpel,
+    dissect_ops.DISSECT_OT_optimize_mesh,
     dissect_ops.DISSECT_OT_remove_layer,
     dissect_ops.DISSECT_OT_peel,
     dissect_ops.DISSECT_OT_commit_cut,

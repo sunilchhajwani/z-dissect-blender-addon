@@ -42,10 +42,24 @@ class DISSECT_PT_main(Panel):
         box.label(text="Tools", icon='TOOL_SETTINGS')
         row = box.row(align=True)
         row.operator("dissect.scalpel", text="Scalpel", icon='MOD_BOOLEAN')
+        row.operator("dissect.sweep_scalpel", text="Advanced", icon='CURVE_BEZCURVE')
+        
         row = box.row(align=True)
         row.operator("dissect.remove_layer", text="Remove", icon='HIDE_ON')
         row = box.row(align=True)
         row.operator("dissect.peel", text="Peel", icon='ANIM')
+
+        layout.separator()
+
+        # Optimization
+        box = layout.box()
+        box.label(text="Mesh Optimization", icon='MOD_DECIM')
+        box.prop(state, "decimate_ratio", slider=True)
+        box.prop(state, "optimization_mode")
+        box.prop(state, "use_remesh")
+        
+        row = box.row()
+        row.operator("dissect.optimize_mesh", text="Optimize Selected", icon='CHECKMARK')
 
         layout.separator()
 
